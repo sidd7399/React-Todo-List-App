@@ -2,10 +2,13 @@ import { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useSelector , useDispatch } from 'react-redux';
 import { Login,Logout,Register } from "./actions";
+import { useTodoContext } from "./Context";
 
 function RegisterForm({setRegisterUser,registerUser}) {
-  const [email, setEmail] = useState('');
+  const {state, register} = useTodoContext();
+
   const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   // const handleSubmit = (e) => {
@@ -15,15 +18,17 @@ function RegisterForm({setRegisterUser,registerUser}) {
 
 
   // redux code 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const handleRegisterForm = (e)=>{
     const rederRegister = {
       username: username,
-      userLoggedIn: true
+      email: email,
+      password: password
     }
      e.preventDefault();
-     dispatch(Register(rederRegister))
+     register(rederRegister)
+     setRegisterUser(false)
   }
 
   return (
