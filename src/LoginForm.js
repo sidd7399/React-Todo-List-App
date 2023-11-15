@@ -3,37 +3,29 @@ import { Button, Form } from "react-bootstrap";
 import { useSelector , useDispatch } from 'react-redux';
 import { Login,Logout } from "./actions";
 import RegisterForm from "./RegisterForm";
-import { useTodoContext } from "./Context";
 
-function LoginForm() {
-  const {state, login} = useTodoContext();
-
-  const [email, setEmail] = useState('');
+function LoginForm({ handleLogin }) {
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [registerUser, setRegisterUser] = useState(false);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const credentials = {
-      email: email,
-      password: password
-    }
-    login(credentials)
-  };
-  console.log(state);
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   handleLogin(username);
+  // };
 
 
   // redux code 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  // const handleLoginForm = (e)=>{
-  //   const rederLogin = {
-  //     username: username,
-  //     userLoggedIn: true
-  //   }
-  //    e.preventDefault();
-  //    dispatch(Login(rederLogin))
-  // }
+  const handleLoginForm = (e)=>{
+    const rederLogin = {
+      username: username,
+      userLoggedIn: true
+    }
+     e.preventDefault();
+     dispatch(Login(rederLogin))
+  }
 
   return (
     <div>
@@ -47,15 +39,15 @@ function LoginForm() {
     
       <h2>Login </h2>
 
-      <Form onSubmit={handleSubmit} className="d-flex flex-column gap-3 mt-3">
+      <Form onSubmit={handleLoginForm} className="d-flex flex-column gap-3 mt-3">
         <Form.Group controlId="formBasicUsername">
-          <Form.Label>Email</Form.Label>
+          <Form.Label>Username</Form.Label>
           <Form.Control
             type="text"
-            placeholder="Enter email"
-            value={email}
+            placeholder="Enter username"
+            value={username}
             required
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => setUsername(e.target.value)}
             />
         </Form.Group>
         <Form.Group controlId="formBasicPassword">

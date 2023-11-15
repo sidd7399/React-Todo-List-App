@@ -1,9 +1,0 @@
-{
-    "port": 3001,
-    "middlewares": ["json-server-auth"],
-    "static": "./public",
-    "auth": {
-      "users": "users",
-      "ignore": ["/todos"]
-    }
-  }

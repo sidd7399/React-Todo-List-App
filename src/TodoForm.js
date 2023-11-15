@@ -2,11 +2,8 @@ import React, { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useSelector , useDispatch } from 'react-redux';
 import { Create_Todo,Toggle_Todo,Delete_Todo } from "./actions";
-import { useTodoContext } from './Context';
 
-
-function TodoForm() {
-  const { state: todosList, createTodo, toggleTodo, deleteTodo } = useTodoContext();
+function TodoForm({ addTodo, user }) {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
 
@@ -33,27 +30,25 @@ function TodoForm() {
 
 
    // redux code 
-  //  const dispatch = useDispatch()//;
+   const dispatch = useDispatch();
 
 
 
   const handleAddTodoForm = (e) => {
     e.preventDefault();
+    const email = user;
+     const parts = email.split("@");
+    const autherName = parts[0];
 
-    const autherName = todosList?.user?.username;
-
-    const addTodoList = {
-      id: new Date().getTime(),
+    const addTodoList ={
       title,
       description,
       author:autherName,
       dateCreated:Date.now(),
-      completedDate:null,
       complete:false
     }
-    console.log(addTodoList);
 
-    createTodo(addTodoList)
+    dispatch(Create_Todo(addTodoList))
     // Reset form fields.
     setTitle('');
     setDescription('');
