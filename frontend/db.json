@@ -1,0 +1,43 @@
+{
+  "users": [
+    {
+      "email": "admin@demo.com",
+      "password": "$2a$10$Jva/UUa9otW7IHlXSRA7YO4GmHGlGBVBcH45CY8NaXv12Obc1r9pu",
+      "username": "admin",
+      "id": 1
+    },
+    {
+      "email": "asadalijangoo@gmail",
+      "password": "$2a$10$74RLf3Ee8oRPQ0qhxqkWbOA3KqUBSv/9WwGFGRv2Uz5S0H539UD4K",
+      "username": "admin@demo.com",
+      "id": 2
+    }
+  ],
+  "todos": [
+    {
+      "id": 1699976431039,
+      "title": "asdfa",
+      "description": "asdfasdf",
+      "author": "admin",
+      "dateCreated": 1699976431039,
+      "completedDate": 1699976433960,
+      "complete": true
+    },
+    {
+      "id": 1699977155389,
+      "title": "sdfkljsfkjsd",
+      "description": "sdfjkdj",
+      "dateCreated": 1699977155389,
+      "completedDate": null,
+      "complete": false
+    },
+    {
+      "id": 1700425208596,
+      "title": "hello",
+      "description": "hello",
+      "dateCreated": 1700425208596,
+      "completedDate": null,
+      "complete": false
+    }
+  ]
+}
